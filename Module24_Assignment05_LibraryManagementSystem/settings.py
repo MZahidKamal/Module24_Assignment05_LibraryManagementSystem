@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'user_app',
     'book_app',
     'borrow_app',
+    'review_app',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"

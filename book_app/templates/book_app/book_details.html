@@ -57,6 +57,9 @@
 
 	<!--ADDITIONAL OPTION-->
 	<br><br>
-	<small>Want to see borrow history? Click ⚙️ <a href="{% url 'profile' %}">Profile.</a></small><br>
+	{% if user.is_authenticated %}
+		<small>Want to see borrow history? Click ⚙️ <a href="{% url 'profile' %}">Profile.</a></small><br>
+	{% endif %}
+
 
 {% endblock %}
