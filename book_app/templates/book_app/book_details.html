@@ -62,4 +62,93 @@
 	{% endif %}
 
 
+
+
+
+
+
+
+
+
+
+
+
+{#	<!--COMMENT VIEW SECTION - START-->#}
+{#	<div class="card m-auto w-auto mb-3">#}
+{#		<h5 class="p-3">Total {{ comments | length }} comments.</h5>#}
+{#		<div class="card-body">#}
+{##}
+{#			{% for comment in comments %}#}
+{#				<div class="border border-primary-subtle rounded m-2 b-2 p-2">#}
+{#					👤 <small style="font-weight: bold">{{ comment.name }}</small>#}
+{#					✉️ <small style="font-style: italic">{{ comment.email }}</small>#}
+{#					🕛 <small>{{ comment.created_at }}</small>#}
+{#					<p>{{ comment.content }}</p>#}
+{#				</div>#}
+{#			{% endfor %}#}
+{##}
+{#		</div>#}
+{#	</div>#}
+{#	<!--COMMENT VIEW SECTION - END-->#}
+{##}
+{##}
+{#	<!--COMMENT POSTING FORM SECTION - START-->#}
+{#	<div class="card m-auto w-auto mb-3">#}
+{#		<div class="card-body">#}
+{#			<form method="post" action="" enctype="multipart/form-data" novalidate class="pt-2">#}
+{##}
+				{#CSRF Token Added here.#}
+{#				{% csrf_token %}#}
+{##}
+{#				<h5>Add Comment</h5>#}
+{#				<br>#}
+{##}
+{#				<!--{{ form | crispy }}-->#}
+{#				{% for field in form %}#}
+{#					{{ field.label }}#}
+{#					{{ field }}#}
+{#					{{ field.errors | striptags }}#}
+{#				{% endfor %}#}
+{##}
+{##}
+{#				{% if form.non_field_errors %}#}
+{#					{% for error in form.non_field_errors %}#}
+{#						<small class="bg-danger text-white p-3">{{ error }}</small>#}
+{#					{% endfor %}#}
+{#				{% endif %}#}
+{##}
+{##}
+{#				{% if messages %}#}
+{#					{% for each in messages %}#}
+{#						<p class="fw-medium" style="color: green">{{ each }}</p>#}
+{#					{% endfor %}#}
+{#				{% endif %}#}
+{##}
+{##}
+{#				<br>#}
+{#				<button type="submit" class="btn btn-primary mt-2">Send</button>#}
+{#				<br>#}
+{#				<br>#}
+{##}
+{#			</form>#}
+{#		</div>#}
+{#	</div>#}
+{#	<!--COMMENT POSTING FORM SECTION - END-->#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% endblock %}
