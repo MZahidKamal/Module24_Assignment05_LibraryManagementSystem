@@ -1,0 +1,45 @@
+<!--FETCHING BASE TEMPLATE-->
+{% extends 'core/base.html' %}
+
+<!--LOADING CRISPY FORMS-->
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+<!--PUNCHING PAGE TITLE HERE-->
+{% block page_heading %} <div class="container"><h1 class="display-5">Edit Profile</h1></div> {% endblock %}
+
+<!--PUNCHING PAGE CONTENTS HERE-->
+{% block page_content %}
+
+	<form method="post" action="" enctype="multipart/form-data" style="width: 50%; height: 500px; margin: auto" class="pt-2">
+
+		<!--CSRF TOKEN IS ADDED HERE-->
+		{% csrf_token %}
+
+		<!--ACTUAL USER FORM IS ADDED HERE-->
+		<!--{{ form | crispy }}-->
+		{% for field in user_form %}
+			{{ field.label }}
+			{{ field }}
+			{{ field.errors | striptags }}
+		{% endfor %}
+
+		<!--ACTUAL ADDRESS FORM IS ADDED HERE-->
+		<!--{{ form | crispy }}-->
+		{% for field in address_form %}
+			{{ field.label }}
+			{{ field }}
+			{{ field.errors | striptags }}
+		{% endfor %}
+
+		<!--SUBMIT BUTTON IS ADDED HERE-->
+		<br>
+		<button type="submit" class="btn btn-primary mt-2">Save</button>
+
+		<!--ADDITIONAL OPTION-->
+		<br><br>
+		<small>Need to change password? Click ⚙️ <a href="{% url 'password_change' %}">Edit Password.</a></small><br>
+
+	</form>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+<!--FETCHING BASE TEMPLATES-->
+{% extends 'core/base.html' %}
+
+<!--PUNCHING PAGE TITLE HERE-->
+{% block page_heading %} <div class="container"><h1 class="display-5">Home</h1></div> {% endblock %}
+
+<!--PUNCHING PAGE CONTENTS HERE-->
+{% block page_content %}
+
+	<!--BOOTSTRAP GRID CONTAINER-->
+	<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4 d-flex justify-content-center">
+
+		{% for book in books %}
+
+			<!--BOOTSTRAP CARD CONTAINING A SINGLE BOOK-->
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				<div class="col">
+					{#				<a href="{% url 'detail_view' book.id %}" style="text-decoration: none; color: inherit;">#}
+					<a href="{% url 'book_details' book.slug %}" style="text-decoration: none; color: inherit;">
+						<div class="card" style="width: 200px">
+							{% if book.image %}<img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.title }}">{% else %}<p>No image to display</p>{% endif %}
+							<div class="card-body">
+								<h6 class="card-title" style="line-height: 0;">{{ book.title|slice:":20" }}</h6>
+								<small class="card-text" style="line-height: 0; font-style: italic">Author: {{ book.author|slice:":17" }}</small><br>
+								<small class="card-text" style="line-height: 0;">Rating: {{ book.reviews }}</small><br>
+								<small class="card-text" style="line-height: 0;">Rent: {{ book.borrowing_price }} €</small><br>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+
+		{% endfor %}
+
+	</div>
+
+
+{% endblock %}

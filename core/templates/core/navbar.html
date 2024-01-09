@@ -1,0 +1,52 @@
+{% load static %}
+
+<!--BOOTSTRAP NAVBAR-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	<div class="container-fluid">
+
+		<!--LOGO SECTION-->
+		<a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'core/images/library_logo.png' %}" alt="Brand Logo" height="50"></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+			<!--BOOK SECTION-->
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Select Category</a>
+					<ul class="dropdown-menu">
+
+						{% for category in categories %}
+							<li><a class="dropdown-item" href="{% url 'books_by_category' category.slug %}">{{ category.name }}</a></li>
+						{% endfor %}
+					</ul>
+				</li>
+			</ul>
+
+			<!--USER SECTION-->
+			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+				{% if user.is_authenticated %}
+					<li class="nav-item"><a class="nav-link" href="{% url 'recharge_wallet' %}"><button type="button" class="btn btn-outline-primary btn-sm">{{ user.first_name }} {{ user.last_name }} | Wallet Balance: {{ user.userprofile.wallet_balance }} €</button></a></li>
+					<li class="nav-item"><a class="nav-link" href="{% url 'profile' %}"><button type="button" class="btn btn-outline-primary btn-sm">Profile</button></a></li>
+					<li class="nav-item"><a class="nav-link" href="{% url 'signout' %}"><button type="button" class="btn btn-outline-primary btn-sm">Sign Out</button></a></li>
+				{% else %}
+					<li class="nav-item"><a class="nav-link" href="{% url 'signup' %}"><button type="button" class="btn btn-outline-primary btn-sm">Register</button></a></li>
+					<li class="nav-item"><a class="nav-link" href="{% url 'signin' %}"><button type="button" class="btn btn-outline-primary btn-sm">Sign In</button></a></li>
+				{% endif %}
+
+			</ul>
+
+			<!--SEARCH SECTION-->
+			<form class="d-flex" role="search">
+				<input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>
+			</form>
+
+		</div>
+	</div>
+</nav>

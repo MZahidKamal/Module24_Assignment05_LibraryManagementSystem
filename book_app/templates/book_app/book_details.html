@@ -1,0 +1,62 @@
+<!--FETCHING BASE TEMPLATE-->
+{% extends 'core/base.html' %}
+
+<!--PUNCHING PAGE TITLE HERE-->
+{% block page_heading %} {% endblock %}
+
+<!--PUNCHING PAGE CONTENTS HERE-->
+{% block page_content %}
+	<!--BOOK TITLE HERE-->
+	<div class="container"><h1 class="display-5">{{ book.title }}</h1></div>
+
+	<!--BOOK IMAGE HERE-->
+	<img src="{{ book.image.url }}" class="img-fluid" style="width: 250px" alt="...">
+
+	<!--OTHER BOOK INFORMATION HERE-->
+	<p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>&nbsp;</span></p>
+	<table style="border-collapse:collapse;border:none;">
+		<tbody>
+		<tr>
+			<td style="width: 134.45pt;padding: 0cm 5.4pt;vertical-align: top;"><p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>Author:</span></p></td>
+			<td style="width: 205.5pt;padding: 0cm 5.4pt;vertical-align: top;"><p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>{{ book.author }}</span></p></td>
+		</tr>
+		<tr>
+			<td style="width: 134.45pt;padding: 0cm 5.4pt;vertical-align: top;"><p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>Category:</span></p></td>
+			<td style="width: 205.5pt;padding: 0cm 5.4pt;vertical-align: top;"><p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>{{ book.category }}</span></p></td>
+		</tr>
+		<tr>
+			<td style="width: 134.45pt;padding: 0cm 5.4pt;vertical-align: top;"><p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>ISBN:</span></p></td>
+			<td style="width: 205.5pt;padding: 0cm 5.4pt;vertical-align: top;"><p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>{{ book.isbn }}</span></p></td>
+		</tr>
+		<tr>
+			<td style="width: 134.45pt;padding: 0cm 5.4pt;vertical-align: top;"><p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>Publisher:</span></p></td>
+			<td style="width: 205.5pt;padding: 0cm 5.4pt;vertical-align: top;"><p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>{{ book.publisher }}</span></p></td>
+		</tr>
+		<tr>
+			<td style="width: 134.45pt;padding: 0cm 5.4pt;vertical-align: top;"><p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>Review:</span></p></td>
+			<td style="width: 205.5pt;padding: 0cm 5.4pt;vertical-align: top;"><p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>{{ book.reviews }}</span></p></td>
+		</tr>
+		<tr>
+			<td style="width: 134.45pt;padding: 0cm 5.4pt;vertical-align: top;"><p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>Available Stock:</span></p></td>
+			<td style="width: 205.5pt;padding: 0cm 5.4pt;vertical-align: top;"><p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>{{ book.available_stock }}</span></p></td>
+		</tr>
+		<tr>
+			<td style="width: 134.45pt;padding: 0cm 5.4pt;vertical-align: top;"><p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>Borrowing Price:</span></p></td>
+			<td style="width: 205.5pt;padding: 0cm 5.4pt;vertical-align: top;"><p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>{{ book.borrowing_price }} €</span></p></td>
+		</tr>
+		<tr>
+			<td style="width: 134.45pt;padding: 0cm 5.4pt;vertical-align: top;"><p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>Description:</span></p></td>
+			<td style="width: 505.5pt;padding: 0cm 5.4pt;vertical-align: top;"><p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>{{ book.description }}</span></p></td>
+		</tr>
+		</tbody>
+	</table>
+	<p style='margin: 0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-family:"Segoe UI",sans-serif;'>&nbsp;</span></p>
+
+	<a href="{% url 'borrow_app:borrow_book' book.slug %}"><button type="button" class="btn btn-primary btn-sm">Borrow and Pay {{ book.borrowing_price }} € from Wallet</button></a>
+
+
+	<!--ADDITIONAL OPTION-->
+	<br><br>
+	<small>Want to see borrow history? Click ⚙️ <a href="{% url 'profile' %}">Profile.</a></small><br>
+
+{% endblock %}
