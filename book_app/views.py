@@ -1,13 +1,9 @@
-from django.views import View
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect, render, get_object_or_404
+from django.contrib import messages
 from django.views.generic import DetailView
-from django.http import HttpResponseForbidden, HttpResponseRedirect
-from .models import Book, Category
+from .models import Book
 from review_app.models import BookReview
 from review_app.forms import BookReview_Form
 from borrow_app.models import Borrow
-from user_app.models import UserProfile
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -37,7 +33,7 @@ class BookDetails_View(DetailView):
             new_review.user = request.user
             new_review.book = book
             new_review.save()
-        # return redirect('home')
+            messages.success(request, 'Your review has been posted successfully!')
         return self.get(request, *args, **kwargs)
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------

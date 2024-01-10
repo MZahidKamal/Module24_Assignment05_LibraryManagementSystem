@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils import timezone
 
 from user_app.models import UserProfile
 from book_app.models import Book
