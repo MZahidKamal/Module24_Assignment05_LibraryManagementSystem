@@ -116,10 +116,9 @@ class BookDetails_View(DetailView):
         form = BookReview_Form(request.POST)
         book = self.get_object()
         if form.is_valid():
-            print(form.cleaned_data['review_text'])
             new_review = form.save(commit=False)
             new_review.user = request.user
             new_review.book = book
             new_review.save()
-        return redirect('home')
-        # return self.get(request, *args, **kwargs)
+        # return redirect('home')
+        return self.get(request, *args, **kwargs)
