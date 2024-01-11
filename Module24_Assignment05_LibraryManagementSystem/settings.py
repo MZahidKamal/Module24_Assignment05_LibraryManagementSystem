@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 import environ
+import dj_database_url
 from pathlib import Path
 
 env = environ.Env()
@@ -99,15 +100,21 @@ WSGI_APPLICATION = 'Module24_Assignment05_LibraryManagementSystem.wsgi.applicati
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env("DB_NAME"),
-        'USER': env("DB_USER"),
-        'PASSWORD': env("DB_PASSWORD"),
-        'HOST': env("DB_HOST"),
-        'PORT': env("DB_PORT"),
-    }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': env("DB_NAME"),
+#         'USER': env("DB_USER"),
+#         'PASSWORD': env("DB_PASSWORD"),
+#         'HOST': env("DB_HOST"),
+#         'PORT': env("DB_PORT"),
+#     }
+# }
+DATABASES = {                                                                                                           # Added database configuration for PostgreSQL during deployment on Render
+    'default': dj_database_url.config(
+        # Feel free to alter this value to suit your needs.
+        default='postgres://library_postgresql_user:17YREEFR1VLSL5syc2OfZ2oCTmsrnxXr@dpg-cmfj1t7qd2ns73a3jolg-a.oregon-postgres.render.com/library_postgresql',
+    )
 }
 
 
