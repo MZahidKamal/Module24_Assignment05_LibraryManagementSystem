@@ -31,6 +31,7 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ['.vercel.app']
 # CSRF_TRUSTED_ORIGINS = ['https://library-b0fq.onrender.com','https://*.127.0.0.1']
 CSRF_TRUSTED_ORIGINS = ['https://library-b0fq.onrender.com','https://*.0.0.0.0']
 
